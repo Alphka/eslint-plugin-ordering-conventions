@@ -22,7 +22,7 @@ That is why this is correct and left alone:
 <Modal size="35rem" onClose={c} opened {...props} withCloseButton={false} centered />
 ```
 
-`opened` before the spread stays overridable; `centered` after it always wins. Reordering them would change behaviour, not layout.
+`opened` before the spread stays overridable; `centered` after it always wins. Reordering them would change behavior, not layout.
 
 ## Examples
 

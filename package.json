@@ -3,30 +3,34 @@
 	"author": "Kayo Souza",
 	"version": "1.0.0",
 	"description": "Auto-fixable ESLint rules for length-based and semantic ordering: imports, interface members, destructured parameters, JSX attributes, hook declarations, Tailwind class strings and JSON keys.",
-	"license": "ISC",
 	"main": "./lib/index.js",
 	"scripts": {
-		"lint": "eslint .",
-		"lint:fix": "eslint . --fix",
+		"lint": "eslint . --cache && cspell --cache --gitignore --no-progress .",
+		"lint:fix": "eslint . --cache --fix",
 		"test": "node --test",
-		"test:watch": "node --test --watch"
+		"test:watch": "node --test --watch",
+		"build:types": "tsc -p tsconfig.types.json"
 	},
 	"devDependencies": {
-		"@cspell/cspell-bundled-dicts": "^10.3.5",
 		"@eslint/js": "^10.0.1",
 		"@stylistic/eslint-plugin": "^5.10.0",
-		"@types/node": "^22.20.4",
-		"@typescript-eslint/parser": "^8.70.1",
-		"eslint": "^10.11.0",
-		"eslint-plugin-n": "^18.4.0",
+		"@types/node": "^26.6.5",
+		"@typescript-eslint/parser": "^8.71.2",
+		"cspell": "^10.3.6",
+		"eslint": "^10.12.0",
+		"eslint-plugin-n": "^18.4.1",
 		"eslint-plugin-sonarjs": "^4.2.2",
-		"eslint-plugin-unicorn": "^76.0.0",
+		"eslint-plugin-unicorn": "^77.0.0",
 		"eslint-plugin-unused-imports": "^4.4.1",
-		"globals": "^17.12.0",
-		"typescript-eslint": "^8.70.1"
+		"globals": "^17.13.0",
+		"typescript": "^6.0.3",
+		"typescript-eslint": "^8.71.2"
+	},
+	"overrides": {
+		"typescript": "$typescript"
 	},
 	"peerDependencies": {
-		"eslint": ">=9.0.0"
+		"eslint": "^9.0.0 || ^10.0.0"
 	},
 	"types": "./types/index.d.ts",
 	"files": [
@@ -34,15 +38,21 @@
 		"types",
 		"docs",
 		"README.md",
-		"LICENSE"
+		"LICENSE.md"
 	],
 	"exports": {
 		".": {
 			"types": "./types/index.d.ts",
 			"default": "./lib/index.js"
 		},
-		"./tailwind": "./lib/shared/tailwind.js",
-		"./comparators": "./lib/shared/comparators.js",
+		"./tailwind": {
+			"types": "./types/tailwind.d.ts",
+			"default": "./lib/shared/tailwind.js"
+		},
+		"./comparators": {
+			"types": "./types/comparators.d.ts",
+			"default": "./lib/shared/comparators.js"
+		},
 		"./package.json": "./package.json"
 	},
 	"keywords": [
@@ -68,8 +78,10 @@
 		"url": "git+https://github.com/Alphka/eslint-plugin-ordering-conventions.git"
 	},
 	"engines": {
-		"node": ">=18.18.0"
+		"node": "^20.19.0 || ^22.13.0 || >=24"
 	},
 	"sideEffects": false,
+	"license": "ISC",
+	"private": true,
 	"type": "module"
 }

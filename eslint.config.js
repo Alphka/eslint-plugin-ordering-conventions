@@ -1,5 +1,3 @@
-/* eslint-disable unicorn/name-replacements */
-
 import { defineConfig } from "eslint/config"
 import unusedImports from "eslint-plugin-unused-imports"
 import nodePlugin from "eslint-plugin-n"
@@ -16,16 +14,14 @@ export default defineConfig([
 	{
 		ignores: [
 			"node_modules/**",
-			".agents/**",
-			".claude/**",
 			".vscode/**",
-			".next/**",
-			"messages/*.d.json.ts",
-			"build/**",
-			"out/**",
-			"src/typings/react.d.ts",
-			"skills-lock.json",
-			"next-env.d.ts"
+			/*
+			 * Emitted by `npm run build:types` from the JSDoc in lib/shared, in TypeScript's own
+			 * formatting. CI re-runs the emit and fails on a diff, which is what keeps them honest
+			 * — style-linting generated output would only mean reformatting it on every build.
+			 */
+			"types/tailwind.d.ts",
+			"types/comparators.d.ts"
 		]
 	},
 	js.configs.recommended,
@@ -41,7 +37,7 @@ export default defineConfig([
 	},
 	{
 		name: "node",
-		files: ["**/*.{js,cjs,mjs,jsx,ts,tsx,cts,mts}"],
+		files: ["**/*.{js,cjs,mjs,ts,cts,mts}"],
 		...nodePlugin.configs["flat/recommended-module"]
 	},
 	{
@@ -203,9 +199,7 @@ export default defineConfig([
 			yoda: "error",
 
 			"n/no-missing-import": "off",
-			"n/no-unsupported-features/node-builtins": ["error", {
-				version: "18.18.0"
-			}],
+			"n/no-unsupported-features/node-builtins": "error",
 
 			"sonar/no-identical-functions": "warn",
 			"sonar/no-identical-expressions": "error",
@@ -410,10 +404,6 @@ export default defineConfig([
 					custom: {
 						regex: "^I[A-Z]",
 						match: true
-					},
-					filter: {
-						regex: "^(Window|Player|AppConfig)$",
-						match: false
 					}
 				}
 			],
@@ -469,47 +459,6 @@ export default defineConfig([
 				}
 			}],
 			"unicorn/iteration-fallback-style": ["error", "guard"],
-			"unicorn/name-replacements": ["error", {
-				allowList: {
-					/* `meta.docs` is the ESLint rule-object API's own key name; it cannot be renamed. */
-					docs: true
-				},
-				checkFilenames: true,
-				checkProperties: true,
-				checkShorthandProperties: true,
-				checkVariables: true,
-				replacements: {
-					e: {
-						event: true,
-						error: true,
-						item: true
-					},
-					el: {
-						element: true
-					},
-					fn: {
-						function: true
-					},
-					btn: {
-						button: true
-					},
-					evt: {
-						event: true
-					},
-					err: {
-						error: true
-					},
-					req: {
-						request: true
-					},
-					res: {
-						response: true
-					},
-					func: {
-						function: true
-					}
-				}
-			}],
 			"unicorn/no-array-sort": "off",
 			"unicorn/no-new-array": "off",
 			"unicorn/no-process-exit": "off",
@@ -537,22 +486,6 @@ export default defineConfig([
 			"unicorn/prefer-uint8array-base64": "off",
 
 			"unused-imports/no-unused-imports": "error"
-		}
-	},
-	{
-		files: ["tests/**/*.js"],
-		languageOptions: {
-			globals: { URL: "readonly" }
-		},
-		rules: {
-			/*
-			 * Tests aren't published (see package.json "files") and only ever run under the Node
-			 * versions in the CI matrix, so they can use node:test APIs newer than the package's
-			 * own engines.node promise to consumers.
-			 */
-			"n/no-unsupported-features/node-builtins": ["error", {
-				version: "20.13.0"
-			}]
 		}
 	}
 ])

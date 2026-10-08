@@ -3,24 +3,22 @@
 	"version": "0.2",
 	"language": "en",
 	"words": [
-		"aiexclude",
+		"Atrule",
 		"codemod",
+		"IAPIResponse",
+		"momoa",
 		"nonconstructor",
 		"nonoctal",
 		"nonwords",
+		"quasis",
 		"Souza"
 	],
 	"ignorePaths": [
 		"node_modules/**",
 		".vscode/**",
-		".next/**",
 		".git/**",
-		".dockerignore",
 		".gitignore",
-		".aiexclude",
-		"package-lock.json",
-		"tsconfig.tsbuildinfo",
-		"*.svg"
+		"package-lock.json"
 	],
 	"import": [
 		"@cspell/cspell-bundled-dicts/cspell-default.json"

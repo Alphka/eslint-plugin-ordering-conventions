@@ -5,6 +5,13 @@ on:
     branches: [main]
   pull_request:
 
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -12,7 +19,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node: ["20.19", "22", "24"]
+        node: ["20.19", "22", "24", "26"]
 
     steps:
       - uses: actions/checkout@v4
@@ -25,5 +32,32 @@ jobs:
       - run: npm ci
 
       - run: npm run lint
+
+      - run: npm test
+
+      # The published .d.ts files are generated from the JSDoc, so a source change that was not
+      # followed by `npm run build:types` would ship stale types.
+      - name: types are up to date
+        run: |
+          npm run build:types
+          git diff --exit-code -- types
+
+  eslint9:
+    name: eslint 9
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - run: npm ci
+
+      # peerDependencies allows ESLint 9, so the rules have to pass there too. Only the suite runs:
+      # linting this repo itself goes through @eslint/js 10, which is not what the peer promises.
+      - run: npm install --no-save eslint@^9
 
       - run: npm test

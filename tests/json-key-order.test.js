@@ -71,10 +71,31 @@ describe("json-key-order", () => {
 		assert.equal(report.messageId, "jsonKeyOrder")
 		assert.equal(report.data.thisKey, "id")
 		assert.equal(report.data.previousKey, "status")
+		/* The whole body is permuted at once, so every position that changes is rewritten here. */
 		assert.deepEqual(report.edits, [
-			{ key: "id", text: "status-text" },
-			{ key: "status", text: "id-text" }
+			{ key: "status", text: "id-text" },
+			{ key: "id", text: "type-text" },
+			{ key: "type", text: "status-text" }
 		])
+	})
+
+	it("permutes the whole body in one fix, so a reversed object converges in a single pass", () => {
+		const sorted = Array.from({ length: 16 }, (_, index) => "k".repeat(index + 2))
+		const reports = run({ path: ["pages"], mode: "length-then-alpha" }, numbered([...sorted].reverse()))
+
+		/*
+		 * One report carrying one permutation, not fifteen adjacent swaps: ESLint stops after ten
+		 * fix passes, so a per-swap fix would leave a reversed object half-sorted.
+		 */
+		assert.equal(reports.length, 1)
+		assert.equal(reports[0].edits.length, 16)
+
+		const applied = [...sorted].reverse()
+		const positionOf = new Map(applied.map((key, index) => [key, index]))
+
+		for(const edit of reports[0].edits) applied[positionOf.get(edit.key)] = edit.text.replace(/-text$/u, "")
+
+		assert.deepEqual(applied, sorted)
 	})
 
 	it("reports an alphabetical-order violation", () => {

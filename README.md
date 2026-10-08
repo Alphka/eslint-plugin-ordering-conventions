@@ -4,13 +4,17 @@ Auto-fixable ESLint rules for the ordering conventions a codebase keeps in its h
 
 Every rule is **formatting-neutral**. A fix permutes the *contents* of slots and never touches a separator byte, so your indentation, line breaks, `;`/`,` delimiters and multi-line layout survive exactly as written — there is nothing for a formatter to undo afterwards.
 
+> **Personal project.** This plugin encodes my own code-style conventions and keeps my personal projects consistent. It is public so it can be installed straight from GitHub, but it is not published to npm and is not meant as a general-purpose package. Rules and defaults change to fit my needs, with no backwards-compatibility promise.
+
 ## Install
 
+Not published to npm. Install from GitHub, pinned to a release tag:
+
 ```sh
-npm install --save-dev eslint-plugin-ordering-conventions
+npm install --save-dev "git+https://github.com/Alphka/eslint-plugin-ordering-conventions.git#v1.0.0"
 ```
 
-Requires ESLint 9 or newer and flat config.
+Requires ESLint 9 or newer (flat config) and Node.js 20.19 or newer. TypeScript files need `typescript-eslint` configured as the parser.
 
 ## Usage
 
@@ -71,8 +75,8 @@ export default [
 Each config is a flat-config fragment carrying `plugins` and `rules` but no `files` of its own, because only you know which files a language applies to. Spread it into a config object that scopes it:
 
 ```js
-import css from "@eslint/css"
 import ordering from "eslint-plugin-ordering-conventions"
+import css from "@eslint/css"
 
 export default [
 	{ files: ["src/**/*.tsx"], ...ordering.configs.recommended },
@@ -84,14 +88,17 @@ export default [
 `json-key-order` has no shared config because it only ever acts on the paths you give it:
 
 ```js
-import json from "@eslint/json"
 import ordering from "eslint-plugin-ordering-conventions"
+import json from "@eslint/json"
 
 export default [
 	{
 		files: ["messages/*.json"],
 		language: "json/json",
-		plugins: { json, "ordering-conventions": ordering },
+		plugins: {
+			json,
+			"ordering-conventions": ordering
+		},
 		rules: {
 			"ordering-conventions/json-key-order": ["error", [
 				{ path: ["pages"], mode: "length-then-alpha", pinnedLeading: ["error", "notFound"] },
@@ -130,4 +137,4 @@ sortTokens(["gap-4", "flex", "items-center"]) // → ["flex", "items-center", "g
 
 ## License
 
-ISC © Kayo Souza
+[ISC](LICENSE.md) © 2026 Kayo Souza

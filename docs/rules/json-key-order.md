@@ -69,7 +69,12 @@ Options are an **array of targets**.
 
 `alpha` is case-insensitive and compares code units rather than using `localeCompare`, so the result is identical on every machine and ICU version.
 
+## How the fix is applied
+
+One report per object, anchored at the first key that has to move, carrying the **whole reordering** as its fix. A single `--fix` is therefore always enough, however badly the object is ordered: fixing one adjacent pair at a time would need one ESLint pass per swap, and ESLint stops after ten — which leaves a reversed object half-sorted.
+
 ## When it holds off
 
-- **A blank line between the two keys.** A gap usually marks a deliberate group, so the swap-fix is declined — the report still fires.
-- Every out-of-order adjacent pair is reported in one pass, so you see all of them at once rather than one per `--fix` cycle.
+- **A blank line anywhere in the body.** A gap marks a deliberate group that reordering would scramble, so the fix is declined for that object — the report still fires.
+- **A `pinnedLeading` prefix that no longer matches.** The object is not checked at all.
+- **A path that does not resolve to an object.** Silently skipped.

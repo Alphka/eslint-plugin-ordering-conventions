@@ -1,0 +1,14 @@
+{
+	"extends": "./tsconfig.json",
+	"compilerOptions": {
+		"noEmit": false,
+		"declaration": true,
+		"emitDeclarationOnly": true,
+		"rootDir": "lib/shared",
+		"outDir": "types"
+	},
+	"include": [
+		"lib/shared/tailwind.js",
+		"lib/shared/comparators.js"
+	]
+}

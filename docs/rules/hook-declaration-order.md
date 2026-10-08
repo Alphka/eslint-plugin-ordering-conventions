@@ -72,7 +72,7 @@ Even within one segment, if any statement's call arguments reference a name boun
 ```tsx
 function Component(){
 	const userRoles = useUserRoles()
-	const previousRolesRef = useRef(userRoles)  // 16 chars, but it reads `userRoles`
+	const previousRolesRef = useRef(userRoles) // 16 chars, but it reads `userRoles`
 }
 ```
 
