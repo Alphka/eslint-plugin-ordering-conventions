@@ -1,0 +1,28 @@
+{
+	"$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+	"version": "0.2",
+	"language": "en",
+	"words": [
+		"aiexclude",
+		"codemod",
+		"nonconstructor",
+		"nonoctal",
+		"nonwords",
+		"Souza"
+	],
+	"ignorePaths": [
+		"node_modules/**",
+		".vscode/**",
+		".next/**",
+		".git/**",
+		".dockerignore",
+		".gitignore",
+		".aiexclude",
+		"package-lock.json",
+		"tsconfig.tsbuildinfo",
+		"*.svg"
+	],
+	"import": [
+		"@cspell/cspell-bundled-dicts/cspell-default.json"
+	]
+}

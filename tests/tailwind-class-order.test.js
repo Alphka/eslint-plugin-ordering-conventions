@@ -47,6 +47,7 @@ createRuleTester().run("tailwind-class-order", rule, {
 		'const label = "flex items-center gap-4"',
 
 		/* a template literal with an expression is out of scope entirely */
+		// eslint-disable-next-line no-template-curly-in-string -- fixture text, not a forgotten template literal
 		"const a = <div className={`flex ${extra} items-center`} />",
 
 		/* an unclassified utility keeps its written position and drags nothing with it */

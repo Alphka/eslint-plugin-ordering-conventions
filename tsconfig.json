@@ -1,0 +1,25 @@
+{
+	"compilerOptions": {
+		"target": "ES2023",
+		"module": "ESNext",
+		"moduleResolution": "Bundler",
+		"lib": ["ES2023"],
+		"allowJs": true,
+		"checkJs": false,
+		"strict": true,
+		"esModuleInterop": true,
+		"isolatedModules": true,
+		"resolveJsonModule": true,
+		"skipLibCheck": true,
+		"noEmit": true
+	},
+	"include": [
+		"**/*.js",
+		"**/*.cjs",
+		"**/*.mjs",
+		"types/**/*.ts"
+	],
+	"exclude": [
+		"node_modules"
+	]
+}
