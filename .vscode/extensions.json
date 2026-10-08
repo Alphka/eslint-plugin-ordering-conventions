@@ -1,0 +1,14 @@
+{
+	"recommendations": [
+		"aaron-bond.better-comments",
+		"christian-kohler.npm-intellisense",
+		"dbaeumer.vscode-eslint",
+		"EditorConfig.EditorConfig",
+		"eg2.vscode-npm-script",
+		"streetsidesoftware.code-spell-checker",
+		"usernamehw.errorlens"
+	],
+	"unwantedRecommendations": [
+		"esbenp.prettier-vscode"
+	]
+}

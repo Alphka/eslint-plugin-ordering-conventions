@@ -1,0 +1,99 @@
+{
+	"cSpell.language": "en",
+
+	"js/ts.format.indentSwitchCase": true,
+	"js/ts.format.insertSpaceAfterCommaDelimiter": true,
+	"js/ts.format.insertSpaceAfterConstructor": false,
+	"js/ts.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
+	"js/ts.format.insertSpaceAfterKeywordsInControlFlowStatements": false,
+	"js/ts.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
+	"js/ts.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": false,
+	"js/ts.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+	"js/ts.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": false,
+	"js/ts.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": false,
+	"js/ts.format.insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces": false,
+	"js/ts.format.insertSpaceAfterSemicolonInForStatements": true,
+	"js/ts.format.insertSpaceAfterTypeAssertion": true,
+	"js/ts.format.insertSpaceBeforeAndAfterBinaryOperators": true,
+	"js/ts.format.insertSpaceBeforeFunctionParenthesis": false,
+	"js/ts.format.placeOpenBraceOnNewLineForControlBlocks": false,
+	"js/ts.format.placeOpenBraceOnNewLineForFunctions": false,
+	"js/ts.format.semicolons": "remove",
+	"js/ts.preferences.importModuleSpecifier": "shortest",
+	"js/ts.preferences.importModuleSpecifierEnding": "minimal",
+	"js/ts.preferences.preferTypeOnlyAutoImports": true,
+	"js/ts.preferences.quoteStyle": "double",
+	"js/ts.reportStyleChecksAsWarnings": true,
+	"js/ts.tsdk.promptToUseWorkspaceVersion": false,
+
+	"eslint.enable": true,
+	"eslint.format.enable": true,
+
+	"[javascript]": {
+		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
+	},
+	"[json]": {
+		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
+	},
+
+	"editor.insertSpaces": false,
+
+	"files.eol": "\n",
+	"files.insertFinalNewline": true,
+	"files.trimTrailingWhitespace": true,
+	"files.trimFinalNewlines": true,
+	"files.trimTrailingWhitespaceInRegexAndStrings": true,
+
+	"[markdown]": {
+		"diffEditor.ignoreTrimWhitespace": false,
+		"editor.insertSpaces": true,
+		"editor.tabSize": 2,
+		"files.insertFinalNewline": false,
+		"files.trimTrailingWhitespace": false
+	},
+	"[yaml]": {
+		"editor.insertSpaces": true,
+		"editor.tabSize": 2,
+		"editor.autoIndent": "advanced"
+	},
+
+	"json.schemaDownload.trustedDomains": {
+		// Defaults
+		"https://schemastore.azurewebsites.net/": true,
+		"https://raw.githubusercontent.com/microsoft/vscode/": true,
+		"https://raw.githubusercontent.com/devcontainers/spec/": true,
+		"https://www.schemastore.org/": true,
+		"https://json.schemastore.org/": true,
+		"https://json-schema.org/": true,
+		"https://developer.microsoft.com/json-schemas/": true,
+
+		"https://raw.githubusercontent.com/raineorshine/npm-check-updates/": true,
+		"https://raw.githubusercontent.com/streetsidesoftware/cspell/": true
+	},
+	"json.schemas": [
+		{
+			"fileMatch": [
+				".ncurc",
+				".ncurc.json",
+			],
+			"url": "https://raw.githubusercontent.com/raineorshine/npm-check-updates/main/src/types/RunOptions.json"
+		}
+	],
+
+	"npm-intellisense.importES6": true,
+	"npm-intellisense.importQuotes": "\"",
+	"npm-intellisense.importLinebreak": "\n",
+
+	"terminal.integrated.autoReplies": {
+		"Terminate batch job (Y/N)?": "Y\r",
+		"Batchvorgang abbrechen (J/N)?": "J\r",
+		"Terminare il processo batch (S/N)?": "S\r",
+		"Terminer le programme de commandes (O/N)\u00A0?": "O\r",
+		"Deseja finalizar o arquivo em lotes (S/N)?": "S\r",
+		"¿Desea terminar el trabajo por lotes (S/N)?": "S\r",
+		"Завершить выполнение пакетного файла [Y(да)/N(нет)]?": "Y\r"
+	}
+}

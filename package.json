@@ -1,0 +1,66 @@
+{
+	"name": "eslint-plugin-ordering-conventions",
+	"author": "Kayo Souza",
+	"version": "1.0.0",
+	"description": "Auto-fixable ESLint rules for length-based and semantic ordering: imports, interface members, destructured parameters, JSX attributes, hook declarations, Tailwind class strings and JSON keys.",
+	"license": "ISC",
+	"main": "./lib/index.js",
+	"scripts": {
+		"lint": "eslint .",
+		"lint:fix": "eslint . --fix",
+		"test": "node --test",
+		"test:watch": "node --test --watch"
+	},
+	"devDependencies": {
+		"@eslint/js": "^10.0.1",
+		"@typescript-eslint/parser": "^8.70.1",
+		"eslint": "^10.11.0"
+	},
+	"peerDependencies": {
+		"eslint": ">=9.0.0"
+	},
+	"types": "./types/index.d.ts",
+	"files": [
+		"lib",
+		"types",
+		"docs",
+		"README.md",
+		"LICENSE"
+	],
+	"exports": {
+		".": {
+			"types": "./types/index.d.ts",
+			"default": "./lib/index.js"
+		},
+		"./tailwind": "./lib/shared/tailwind.js",
+		"./comparators": "./lib/shared/comparators.js",
+		"./package.json": "./package.json"
+	},
+	"keywords": [
+		"eslint",
+		"eslintplugin",
+		"eslint-plugin",
+		"ordering",
+		"sort",
+		"sort-imports",
+		"import-order",
+		"jsx",
+		"react",
+		"tailwindcss",
+		"typescript",
+		"json",
+		"code-style",
+		"formatting"
+	],
+	"homepage": "https://github.com/Alphka/eslint-plugin-ordering-conventions#readme",
+	"bugs": "https://github.com/Alphka/eslint-plugin-ordering-conventions/issues",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Alphka/eslint-plugin-ordering-conventions.git"
+	},
+	"engines": {
+		"node": ">=18.18.0"
+	},
+	"sideEffects": false,
+	"type": "module"
+}

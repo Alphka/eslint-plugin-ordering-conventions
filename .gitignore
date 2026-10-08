@@ -1,0 +1,6 @@
+node_modules/
+*.tgz
+*.log
+.eslintcache
+coverage/
+.DS_Store
