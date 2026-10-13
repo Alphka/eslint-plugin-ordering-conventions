@@ -38,6 +38,7 @@
 		"types",
 		"docs",
 		"README.md",
+		"CHANGELOG.md",
 		"LICENSE.md"
 	],
 	"exports": {
@@ -78,7 +79,7 @@
 		"url": "git+https://github.com/Alphka/eslint-plugin-ordering-conventions.git"
 	},
 	"engines": {
-		"node": "^20.19.0 || ^22.13.0 || >=24"
+		"node": "^22.18.0 || >=24"
 	},
 	"sideEffects": false,
 	"license": "ISC",

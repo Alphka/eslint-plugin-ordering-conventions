@@ -1,5 +1,12 @@
 # eslint-plugin-ordering-conventions
 
+[![CI](https://github.com/Alphka/eslint-plugin-ordering-conventions/actions/workflows/ci.yml/badge.svg)](https://github.com/Alphka/eslint-plugin-ordering-conventions/actions/workflows/ci.yml)
+[![ESLint 9 or 10](https://img.shields.io/badge/eslint-9%20%7C%7C%2010-4B32C3?logo=eslint&logoColor=white)](https://eslint.org)
+[![Node 22.18+](https://img.shields.io/badge/node-22.18+-5FA04E?logo=node.js&logoColor=white)](https://nodejs.org)
+[![8 rules, all auto-fixable](https://img.shields.io/badge/rules-8%20auto--fixable-success)](#rules)
+[![Zero runtime dependencies](https://img.shields.io/badge/dependencies-0-success)](package.json)
+[![ISC license](https://img.shields.io/badge/license-ISC-blue)](LICENSE.md)
+
 Auto-fixable ESLint rules for the ordering conventions a codebase keeps in its head: imports grouped and ragged by clause length, interface members sorted by key length, JSX attributes banded by role, Tailwind utilities in semantic order, JSON catalogues sorted by key.
 
 Every rule is **formatting-neutral**. A fix permutes the *contents* of slots and never touches a separator byte, so your indentation, line breaks, `;`/`,` delimiters and multi-line layout survive exactly as written — there is nothing for a formatter to undo afterwards.
@@ -8,13 +15,45 @@ Every rule is **formatting-neutral**. A fix permutes the *contents* of slots and
 
 ## Install
 
-Not published to npm. Install from GitHub, pinned to a release tag:
+Not published to npm. Install from GitHub with npm, pnpm or Yarn, pinned to a release tag. Each command below is complete — the flags and the fragment syntax differ per package manager:
 
 ```sh
-npm install --save-dev "git+https://github.com/Alphka/eslint-plugin-ordering-conventions.git#v1.0.0"
+npm install --save-dev --allow-git=root "git+https://github.com/Alphka/eslint-plugin-ordering-conventions.git#v1.0.0"
 ```
 
-Requires ESLint 9 or newer (flat config) and Node.js 20.19 or newer. TypeScript files need `typescript-eslint` configured as the parser.
+```sh
+pnpm add -D "git+https://github.com/Alphka/eslint-plugin-ordering-conventions.git#v1.0.0"
+```
+
+```sh
+yarn add -D "eslint-plugin-ordering-conventions@git+https://github.com/Alphka/eslint-plugin-ordering-conventions.git#tag=v1.0.0"
+```
+
+Pin the tag. Dropping the tag tracks the default branch instead, which moves under you — and because this plugin makes no backwards-compatibility promise, a rule's defaults can change between any two commits. To upgrade, raise the tag and reinstall; the [changelog](CHANGELOG.md) records what changed between tags.
+
+**npm 12 and newer** refuse git dependencies by default (`allow-git=none`), failing with `EALLOWGIT`. That is what `--allow-git=root` above opts into: it permits only the git dependencies your own `package.json` declares, the narrowest setting that works. `npm ci` is refused for the same reason and takes no such flag from the install command, so put it in the consuming project's `.npmrc`:
+
+```ini
+allow-git=root
+```
+
+**Yarn Berry (v2+)** reads the URL fragment as `key=value` selectors, hence `#tag=v1.0.0` rather than a bare `#v1.0.0`, which it only matches heuristically. Yarn Classic (v1) wants the bare form. If your project sets `approvedGitRepositories` in `.yarnrc.yml`, add this repository to the list or Yarn will refuse to fetch it:
+
+```yaml
+approvedGitRepositories:
+  - "https://github.com/Alphka/eslint-plugin-ordering-conventions"
+```
+
+### Requirements
+
+| | |
+| --- | --- |
+| **ESLint** | 9 or 10, flat config (`eslint.config.js`). The legacy `.eslintrc` format is not supported. |
+| **Node.js** | 22.18 or newer, or 24 and newer. |
+| **TypeScript files** | Need [`typescript-eslint`](https://typescript-eslint.io) configured as the parser. No type information is required — every rule is syntactic. |
+| **JSON / CSS files** | `json-key-order` needs [`@eslint/json`](https://www.npmjs.com/package/@eslint/json); `tailwind-apply-class-order` needs [`@eslint/css`](https://www.npmjs.com/package/@eslint/css). Neither is a dependency of this plugin — install whichever you use. |
+
+The plugin itself has **no runtime dependencies**.
 
 ## Usage
 

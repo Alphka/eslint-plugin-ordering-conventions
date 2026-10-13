@@ -13,27 +13,23 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  test:
+  # Linting does not vary with the Node version, so it runs once rather than once per matrix
+  # entry. It runs on the floor of `engines` because that is the claim worth testing: the dev
+  # toolchain (cspell) requires 22.18, and a dependency that raises that floor has to fail here.
+  lint:
     runs-on: ubuntu-latest
 
-    strategy:
-      fail-fast: false
-      matrix:
-        node: ["20.19", "22", "24", "26"]
-
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
-          node-version: ${{ matrix.node }}
+          node-version: "22.18"
           cache: npm
 
       - run: npm ci
 
       - run: npm run lint
-
-      - run: npm test
 
       # The published .d.ts files are generated from the JSDoc, so a source change that was not
       # followed by `npm run build:types` would ship stale types.
@@ -42,16 +38,36 @@ jobs:
           npm run build:types
           git diff --exit-code -- types
 
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ["22.18", "24", "26"]
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm test
+
   eslint9:
     name: eslint 9
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
-          node-version: "22"
+          node-version: "22.18"
           cache: npm
 
       - run: npm ci
