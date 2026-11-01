@@ -1,11 +1,11 @@
 {
 	"extends": "./tsconfig.json",
 	"compilerOptions": {
-		"noEmit": false,
 		"declaration": true,
 		"emitDeclarationOnly": true,
-		"rootDir": "lib/shared",
-		"outDir": "types"
+		"outDir": "types",
+		"noEmit": false,
+		"rootDir": "lib/shared"
 	},
 	"include": [
 		"lib/shared/tailwind.js",

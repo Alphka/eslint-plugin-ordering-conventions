@@ -24,6 +24,7 @@
 	"js/ts.preferences.preferTypeOnlyAutoImports": true,
 	"js/ts.preferences.quoteStyle": "double",
 	"js/ts.reportStyleChecksAsWarnings": true,
+	"js/ts.tsdk.path": "node_modules/typescript/lib",
 	"js/ts.tsdk.promptToUseWorkspaceVersion": false,
 
 	"eslint.enable": true,

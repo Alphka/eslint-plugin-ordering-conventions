@@ -1,17 +1,17 @@
 {
 	"compilerOptions": {
-		"target": "ESNext",
 		"module": "NodeNext",
-		"moduleResolution": "NodeNext",
-		"strict": true,
+		"target": "ESNext",
 		"allowJs": true,
 		"checkJs": false,
-		"lib": ["ESNext"],
-		"types": ["node"],
-		"esModuleInterop": true,
+		"strict": true,
+		"moduleResolution": "NodeNext",
 		"isolatedModules": true,
+		"esModuleInterop": true,
 		"resolveJsonModule": true,
 		"skipLibCheck": true,
+		"types": ["node"],
+		"lib": ["ESNext"],
 		"noEmit": true
 	},
 	"include": [

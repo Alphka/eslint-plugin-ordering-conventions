@@ -3,7 +3,34 @@
 	"author": "Kayo Souza",
 	"version": "1.0.0",
 	"description": "Auto-fixable ESLint rules for length-based and semantic ordering: imports, interface members, destructured parameters, JSX attributes, hook declarations, Tailwind class strings and JSON keys.",
+	"license": "ISC",
+	"private": true,
 	"main": "./lib/index.js",
+	"types": "./types/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./types/index.d.ts",
+			"default": "./lib/index.js"
+		},
+		"./tailwind": {
+			"types": "./types/tailwind.d.ts",
+			"default": "./lib/shared/tailwind.js"
+		},
+		"./comparators": {
+			"types": "./types/comparators.d.ts",
+			"default": "./lib/shared/comparators.js"
+		},
+		"./package.json": "./package.json"
+	},
+	"files": [
+		"lib",
+		"types",
+		"docs",
+		"README.md",
+		"CHANGELOG.md",
+		"LICENSE.md"
+	],
+	"sideEffects": false,
 	"scripts": {
 		"lint": "eslint . --cache && cspell --cache --gitignore --no-progress .",
 		"lint:fix": "eslint . --cache --fix",
@@ -20,42 +47,24 @@
 		"eslint": "^10.12.0",
 		"eslint-plugin-n": "^18.4.1",
 		"eslint-plugin-sonarjs": "^4.2.2",
-		"eslint-plugin-unicorn": "^77.0.0",
+		"eslint-plugin-unicorn": "^79.0.0",
 		"eslint-plugin-unused-imports": "^4.4.1",
 		"globals": "^17.13.0",
 		"typescript": "^6.0.3",
 		"typescript-eslint": "^8.71.2"
 	},
-	"overrides": {
-		"typescript": "$typescript"
-	},
 	"peerDependencies": {
 		"eslint": "^9.0.0 || ^10.0.0"
 	},
-	"types": "./types/index.d.ts",
-	"files": [
-		"lib",
-		"types",
-		"docs",
-		"README.md",
-		"CHANGELOG.md",
-		"LICENSE.md"
-	],
-	"exports": {
-		".": {
-			"types": "./types/index.d.ts",
-			"default": "./lib/index.js"
-		},
-		"./tailwind": {
-			"types": "./types/tailwind.d.ts",
-			"default": "./lib/shared/tailwind.js"
-		},
-		"./comparators": {
-			"types": "./types/comparators.d.ts",
-			"default": "./lib/shared/comparators.js"
-		},
-		"./package.json": "./package.json"
+	"overrides": {
+		"typescript": "$typescript"
 	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Alphka/eslint-plugin-ordering-conventions.git"
+	},
+	"bugs": "https://github.com/Alphka/eslint-plugin-ordering-conventions/issues",
+	"homepage": "https://github.com/Alphka/eslint-plugin-ordering-conventions#readme",
 	"keywords": [
 		"eslint",
 		"eslintplugin",
@@ -72,17 +81,8 @@
 		"code-style",
 		"formatting"
 	],
-	"homepage": "https://github.com/Alphka/eslint-plugin-ordering-conventions#readme",
-	"bugs": "https://github.com/Alphka/eslint-plugin-ordering-conventions/issues",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/Alphka/eslint-plugin-ordering-conventions.git"
-	},
 	"engines": {
-		"node": "^22.18.0 || >=24"
+		"node": ">=22.18.0"
 	},
-	"sideEffects": false,
-	"license": "ISC",
-	"private": true,
 	"type": "module"
 }
