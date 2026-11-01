@@ -49,7 +49,8 @@ approvedGitRepositories:
 | | |
 | --- | --- |
 | **ESLint** | 9 or 10, flat config (`eslint.config.js`). The legacy `.eslintrc` format is not supported. |
-| **Node.js** | 22.18 or newer, or 24 and newer. |
+| **Node.js** | 22.18.0 or newer. Verified on 22.18.0 and 26.12.1 (`npm ci`, tests, lint, `build:types`). Dependency floor: `cspell` requires `>=22.18.0`. |
+| **npm** | The repo is an npm project (`package-lock.json`); pnpm was not tested. |
 | **TypeScript files** | Need [`typescript-eslint`](https://typescript-eslint.io) configured as the parser. No type information is required — every rule is syntactic. |
 | **JSON / CSS files** | `json-key-order` needs [`@eslint/json`](https://www.npmjs.com/package/@eslint/json); `tailwind-apply-class-order` needs [`@eslint/css`](https://www.npmjs.com/package/@eslint/css). Neither is a dependency of this plugin — install whichever you use. |
 
